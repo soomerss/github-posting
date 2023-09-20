@@ -10,7 +10,7 @@
 - github repo에 pr하여 main브랜치에 병합
 
 ## 기능
-- 데이터 수집 크롤러 [  ]
+- 데이터 수집 크롤러 [ v ]
 - Readme.md 문자열 만들기 [ ]
 - github repo pull 및 branch 생성 [ ]
 - 기존 img폴더 삭제 및 img 업로드 [ ]
