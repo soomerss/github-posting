@@ -2,6 +2,7 @@ from github import Auth, Github
 import os
 from datetime import datetime
 import requests
+import re
 
 
 repo_name = 'soomerss/soomerss'
@@ -25,6 +26,19 @@ def create_branch(repo, base_branch_name, new_branch_name):
         print("branch가 생성 되었습니다.")
     except:
         print("branch가 이미 생성 되었습니다.")
+
+def new_post_checker(repo,pars_datas):
+    readme = repo.get_readme()
+    readme_text = readme.decoded_content.decode('utf-8')
+    date_pattern = r'\d{4}\.\s\d+\.\s\d+\.'
+    dates = re.findall(date_pattern, readme_text)
+    github_date = datetime.strptime(dates[0], '%Y. %m. %d.')
+    blog_date = datetime.strptime(pars_datas[0][0], '%Y. %m. %d.')
+    if github_date < blog_date:
+        return True
+    else:
+        return False
+
 
 def delete_files(repo,new_branch_name):
     """

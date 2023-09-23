@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+from datetime import datetime
 
 class BlogCrawler:
     def __init__(self,):

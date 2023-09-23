@@ -4,6 +4,7 @@
 ## 코드의 순차적 흐름
 - github action을 통해 main()함수를 실행
 - 크롤러를 통해 블로그 크롤링
+- 새로운 post가 없을 경우 종료(과도한 commit 이력 방지)
 - github repo Pull하여 branch 생성
 - docs에는 기존 img 폴더 삭제 및 사용할 6개의 img파일 업로드
 - template에 크롤러 문자열과 img조합하여 최종 .md생성
@@ -17,3 +18,4 @@
 - 최종 .md 생성 [ v ]
 - github repo main브랜치 병합 [ v ]
 - github action template 작성 [ v ]
+- 새로운 게시물 체커 [ v ]
