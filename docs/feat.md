@@ -16,4 +16,4 @@
 - 기존 img폴더 삭제 및 img 업로드 [ v ]
 - 최종 .md 생성 [ v ]
 - github repo main브랜치 병합 [ v ]
-- github action template 작성 [ ]
+- github action template 작성 [ v ]
