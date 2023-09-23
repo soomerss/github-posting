@@ -1,6 +1,9 @@
 ## 🚀 블로그 게시물 자동 업데이트
 
-
+### Blog
+![blog_sample.png](docs%2Fblog_sample.png)
+### Github
+![github_sample.png](docs%2Fgithub_sample.png)
 ## ❗️개발 목적
 - 블로그 게시물을 올리면 github에도 연동 될 수 있도록 하고 싶었습니다.
 
