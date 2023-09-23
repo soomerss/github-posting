@@ -11,9 +11,9 @@
 
 ## 기능
 - 데이터 수집 크롤러 [ v ]
-- Readme.md 문자열 만들기 [ ]
+- Readme.md 문자열 만들기 [ v ]
 - github repo pull 및 branch 생성 [ v ]
 - 기존 img폴더 삭제 및 img 업로드 [ v ]
-- 최종 .md 생성 [ ]
+- 최종 .md 생성 [ v ]
 - github repo main브랜치 병합 [ v ]
 - github action template 작성 [ ]

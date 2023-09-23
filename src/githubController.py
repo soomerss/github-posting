@@ -2,7 +2,7 @@ from github import Auth, Github
 import os
 from datetime import datetime
 import requests
-import base64
+
 
 repo_name = 'soomerss/soomerss'
 base_branch_name = 'main'
@@ -28,37 +28,49 @@ def create_branch(repo, base_branch_name, new_branch_name):
 
 def delete_files(repo,new_branch_name):
     """
-    :param g: github Object
+    :param repo: github repo
     :param new_branch_name: new_branch_name
     :return:
     """
-    for content in repo.get_contents('img', ref=new_branch_name):
-        repo.delete_file(
-            content.path,
-            f"{datetime.now().strftime('%Y%m%d')}",
-            content.sha,
-            branch=new_branch_name
-        )
-    print(f"{new_branch_name}_delete")
+    try:
+        for content in repo.get_contents('img', ref=new_branch_name):
+            repo.delete_file(
+                content.path,
+                f"{datetime.now().strftime('%Y%m%d')}",
+                content.sha,
+                branch=new_branch_name
+            )
+        print(f"{new_branch_name}_delete")
+    except:
+        print(f"{new_branch_name}가 이미 삭제되었습니다.")
 
-def create_img_files(repo,img_url,new_branch_name):
-    content_name = img_url.split('/')[-2]
-    res = requests.get(img_url)
-    image_content = res.content
+def create_img_files(repo,img_name,img_content,new_branch_name):
     try:
         repo.create_file(
-            path=f'img/{content_name}.png',
-            message=f"Add img file {content_name} upload",
-            content=image_content,
+            path=f'img/{img_name}.png',
+            message=f"Add img file {img_name} upload",
+            content=img_content,
             branch=new_branch_name
         )
     except:
-        print("이미 파일이 생성되었습니다.")
+        print(f"이미 {img_name}파일이 생성되었습니다.")
+
+def final_readme_update(repo,readme_txt,new_branch_name):
+    readme = repo.get_readme(ref=new_branch_name)
+    try:
+        repo.update_file(
+            path=readme.path,
+            message="Update README",
+            content=readme_txt,
+            sha=readme.sha,
+            branch=new_branch_name
+        )
+    except:
+        print("readme_update 오류 발생")
 
 def repo_merge(repo,base_branch_name,new_branch_name):
     # main 브랜치로 이동하여 새 브랜치를 병합합니다.
-    repo.merge(base_branch_name,new_branch_name,'merge_okay')
+    repo.merge(base_branch_name,new_branch_name,'merge_complete')
 
-if __name__ == "__main__":
-    # delete_files(create_github())
-    create_img_files(create_github_repo(repo_name),'https://blog.kakaocdn.net/dn/bg5whL/btsvdr67yL5/2NEuVkFdDdzyRP5NtPEViK/img.jpg',new_branch_name)
+
+

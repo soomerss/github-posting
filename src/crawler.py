@@ -17,15 +17,15 @@ class BlogCrawler:
         soup_datas = self.fetch()
         pars_datas = []
         for data in soup_datas:
+            date = data.find('span', 'date').get_text()
             image = data.img['src'].split('=')[1]
             title = data.find('span', 'title').get_text(strip=True)
-            contents = data.find('span', 'excerpt').get_text(strip=True)
-            date = data.find('span', 'date').get_text()
             link = self.BASE_URL + data.find('a')['href']
+            contents = data.find('span', 'excerpt').get_text(strip=True)
             pars_datas.append([date, image, title, link, contents])
         return pars_datas
 
 
 if __name__ == '__main__':
     crawler = BlogCrawler()
-    print(crawler.soup_parser())
+    print(crawler.soup_parser()[0])
