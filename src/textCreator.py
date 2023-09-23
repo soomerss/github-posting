@@ -27,7 +27,7 @@ def create_table_text(pars_datas):
     return table_txt
 
 def create_readme(table_txt):
-    with open('template/base_template.md','r') as f:
+    with open('src/template/base_template.md','r') as f:
         file = f.readlines()
         final_txt = ''.join(file) + table_txt.strip()
         return final_txt
