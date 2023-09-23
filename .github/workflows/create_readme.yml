@@ -4,6 +4,8 @@
 name: create_readme
 
 on:
+  schedule:
+    - cron: '15 2 * * *'
   push:
     branches: [ "main" ]
   pull_request:
