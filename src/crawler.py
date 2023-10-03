@@ -21,7 +21,8 @@ class BlogCrawler:
             try:
                 image = data.img['src'].split('=')[1]
             except TypeError:
-                image = "https://github.com/soomerss/github-posting/blob/main/docs/sample_image.png"
+                # blob -> raw
+                image = "https://github.com/soomerss/github-posting/raw/main/docs/sample_image.png"
             title = data.find('span', 'title').get_text(strip=True)
             link = self.BASE_URL + data.find('a')['href']
             contents = data.find('span', 'excerpt').get_text(strip=True)
@@ -32,5 +33,5 @@ class BlogCrawler:
 
 if __name__ == '__main__':
     crawler = BlogCrawler()
-    print(crawler.soup_parser()[0])
+    print(crawler.soup_parser()[1])
 
